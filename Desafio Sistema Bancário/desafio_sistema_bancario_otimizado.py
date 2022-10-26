@@ -57,7 +57,7 @@ def exibir_extrato(saldo, /, *, extrato):
 
 def criar_usuario(usuarios):
     cpf = input("Informe o CPF (somente números): ")
-    usuario = filtrar_usuarios(cpf, usuarios)
+    usuario = filtrar_usuario(cpf, usuarios)
 
     if usuario:
         print("\n@@@ Já existe usuário com esse CPF! @@@")
@@ -67,17 +67,21 @@ def criar_usuario(usuarios):
     data_nascimento = input("Infome a data de nascimento (dd-mm-aaaa): ")
     endereco = input("Infome o endereço (logradouro, nro - bairro - cidade/sigla estado): ")
 
-    usuarios.append.({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
+    usuarios.append({"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco})
 
     print("=== Usuário criado com sucesso! ===")
 
-def cria_conta(agencia, numero_conta, usuarios):
+def filtrar_usuario(cpf, usuarios):
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else None
+
+def criar_conta(agencia, numero_conta, usuarios):
     cpf = input("Informe o CPF do usuário: ")
-    usuario = filtrar_usuario(cpf, usuario)
+    usuario = filtrar_usuario(cpf, usuarios)
 
     if usuario:
         print("\n=== Conta criada com sucesso! ===")
-        return {"agencia": agencia, "numero_conta": numero_conta, "usuario"; usuario}
+        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
 
     print("\n@@@ Usuário não encontrado, fluxo de criação de conta encerrado! @@@")
 
@@ -105,10 +109,10 @@ def main():
 
     while True:
 
-        opcao = (menu)
+        opcao = menu()
 
         if opcao == "1":
-            valor = float(input("Informe o valor do depóstivo: "))
+            valor = float(input("Informe o valor do depósitivo: "))
 
             saldo, extrato = depositar(saldo, valor, extrato)
 
