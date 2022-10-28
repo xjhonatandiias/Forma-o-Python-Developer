@@ -1,5 +1,6 @@
 import textwrap
 
+
 def menu():
     menu = """"\n
     =============== MENU ===============
@@ -53,7 +54,7 @@ def exibir_extrato(saldo, /, *, extrato):
     print("\n================ EXTRATO ================")
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo:\t\tR$ {saldo:.2f}")
-    print("==========================================")
+    print("===========================================")
 
 def criar_usuario(usuarios):
     cpf = input("Informe o CPF (somente números): ")
@@ -89,7 +90,7 @@ def listar_contas(contas):
     for conta in contas:
         linha = f"""\
             Agência:\t{conta['agencia']}
-            C/C:\t\t{conta['numero+_conta']}
+            C/C:\t\t{conta['numero_conta']}
             Titular:\t{conta['usuario']['nome']}
         """
         print("=" * 100)
@@ -108,7 +109,6 @@ def main():
 
 
     while True:
-
         opcao = menu()
 
         if opcao == "1":
